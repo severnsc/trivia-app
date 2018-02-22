@@ -6,14 +6,16 @@ export default styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     shadowColor: "black",
     shadowOpacity: 0.12,
     shadowOffset: {width: 1, height: 1},
     shadowRadius: 6,
-    minHeight: 90
+    minHeight: 90,
+    maxWidth: 310,
+    padding: 10
   },
   cardBody: {
-    display:"flex",
+    display:"flex"
   }
 })
