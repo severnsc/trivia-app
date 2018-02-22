@@ -5,5 +5,5 @@ import Results from './src/screens/Results'
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default App = () => (
-  <Results />
+  <Quiz />
 )
