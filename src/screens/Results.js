@@ -1,16 +1,16 @@
 import React from 'react'
 import { Text, Button, View } from 'react-native'
-import Container from '../components/Container'
-import { H1, H2 } from '../components/Typography'
+import Container from '../components/common/Container'
+import { H1, H2 } from '../components/common/Typography'
 import ResultsList from '../components/ResultsList'
-import Card from '../components/Card'
+import Card from '../components/common/Card'
 
 const data = [
   {id: 1, text: "Unturned originally started as a Roblox game."},
   {id: 2, text: "You are a duck."}
 ]
 
-export default Results = () => (
+export default Results = ({navigator}) => (
   <Container>
     <H1>You Scored</H1>
     <H2>3/10</H2>
@@ -24,6 +24,6 @@ export default Results = () => (
         />
       </Card.Body>
     </Card>
-    <Button onPress={() => {}} title="PLAY AGAIN?" />
+    <Button onPress={() => navigator.navigate('Home')}  title="PLAY AGAIN?" />
   </Container>
 )

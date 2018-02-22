@@ -1,8 +1,8 @@
 import React from 'react'
 import {View, Text, Button} from 'react-native'
-import Container from '../components/Container'
-import Card from '../components/Card'
-import { H1, H2 } from '../components/Typography'
+import Container from '../components/common/Container'
+import Card from '../components/common/Card'
+import { H1, H2 } from '../components/common/Typography'
 
 export default Quiz = () => (
   <Container>
