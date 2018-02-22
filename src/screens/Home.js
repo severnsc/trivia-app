@@ -7,6 +7,6 @@ export default Home = ({navigation}) => (
     <Text>Welcome to the Trivia Challenge!</Text>
     <Text>Your will be presented with 10 True or False questions.</Text>
     <Text>Can you score 100%</Text>
-    <Button title="BEGIN" onPress={() => navigation.navigate('Quiz')} />
+    <Button title="BEGIN" onPress={() => navigation.navigate('Quiz', {name: "Quiz"})} />
   </Container>
 )

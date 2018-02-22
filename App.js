@@ -16,7 +16,13 @@ const RootNavigator = StackNavigator({
   },
 },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'Home',
+    initialRouteParams: {
+      name: "Home"
+    },
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.name}`
+    })
   }
 )
 
