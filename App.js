@@ -3,6 +3,8 @@ import Home from './src/screens/Home'
 import Quiz from './src/screens/Quiz'
 import Results from './src/screens/Results'
 import { StackNavigator } from 'react-navigation'
+import { ApolloProvider } from 'react-apollo'
+import client from './src/Apollo'
 
 const RootNavigator = StackNavigator({
   Home: {
@@ -27,5 +29,7 @@ const RootNavigator = StackNavigator({
 )
 
 export default App = () => (
-  <RootNavigator />
+  <ApolloProvider client={client}>
+    <RootNavigator />
+  </ApolloProvider>
 )

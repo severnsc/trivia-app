@@ -19,9 +19,17 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.1.9",
+    "apollo-client": "^2.2.5",
+    "apollo-link": "^1.2.1",
+    "apollo-link-http": "^1.5.1",
+    "apollo-link-state": "^0.4.0",
     "expo": "^25.0.0",
+    "graphql": "^0.13.1",
+    "graphql-tag": "^2.8.0",
     "native-base": "^2.3.9",
     "react": "16.2.0",
+    "react-apollo": "^2.0.4",
     "react-native": "0.52.0",
     "react-navigation": "^1.1.2"
   }
