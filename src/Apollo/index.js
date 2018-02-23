@@ -11,7 +11,11 @@ const httpLink = new HttpLink({ uri })
 const cache = new InMemoryCache()
 
 const defaultState = {
-  answeredQuestions: []
+  answeredQuestions: [],
+  questionNumber: {
+    __typename: "QuestionNumber",
+    value: 1
+  }
 }
 
 const stateLink = withClientState({
