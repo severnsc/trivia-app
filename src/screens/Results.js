@@ -7,14 +7,20 @@ import Card from '../components/common/Card'
 import { graphql, compose } from 'react-apollo'
 import { getAnsweredQuestions } from '../graphql'
 
-const data = [
-  {id: 1, text: "Unturned originally started as a Roblox game."},
-  {id: 2, text: "You are a duck."}
-]
-
 const Results = ({navigation, answeredQuestions}) => {
 
   const score = answeredQuestions.filter(q => q.correct).length
+
+  const resultsListItem = ({item}) => (
+    <View>
+      <Text>
+        {item.questionText}
+      </Text>
+      <Text>
+        You answered: {item.userAnswer} | Correct answer: {item.correctAnswer}
+      </Text>
+    </View>
+  )
 
   return(
     <Container>
@@ -23,9 +29,9 @@ const Results = ({navigation, answeredQuestions}) => {
       <Card>
         <Card.Body>
           <ResultsList
-            data={data}
-            renderItem={({item}) => <Text>{item.text}</Text>}
-            keyExtractor={(item, index) => item.id}
+            data={answeredQuestions}
+            renderItem={resultsListItem}
+            keyExtractor={(item, index) => item.questionText}
             ItemSeparatorComponent={() => <View style={{borderWidth:1, borderColor:"grey"}} />}
           />
         </Card.Body>
