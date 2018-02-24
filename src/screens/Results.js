@@ -10,7 +10,7 @@ const data = [
   {id: 2, text: "You are a duck."}
 ]
 
-export default Results = ({navigator}) => (
+export default Results = ({navigation}) => (
   <Container>
     <H1>You Scored</H1>
     <H2>3/10</H2>
@@ -24,6 +24,6 @@ export default Results = ({navigator}) => (
         />
       </Card.Body>
     </Card>
-    <Button onPress={() => navigator.navigate('Home')}  title="PLAY AGAIN?" />
+    <Button onPress={() => navigation.navigate('Home', {name: "Home"})}  title="PLAY AGAIN?" />
   </Container>
 )

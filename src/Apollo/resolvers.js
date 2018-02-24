@@ -6,7 +6,6 @@ export default {
       const query = gql`
         query getAnsweredQuestions {
           answeredQuestions @client {
-            id
             category
             questionText
             correctAnswer
@@ -23,7 +22,8 @@ export default {
         ]
       }
       cache.writeQuery({ query, data })
-      return {answeredQuestion, __typename: 'AnsweredQuestion'}
+      console.log(data)
+      return null
     },
     incrementQuestionNumber: (_, { value }, { cache }) => {
       const query = gql`

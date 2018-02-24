@@ -1,5 +1,5 @@
 import questionsQuery from './questionsQuery'
 import questionNumber from './questionNumber'
-import incrementQuestionNumber from './incrementQuestionNumber'
+import handleAnswer from './handleAnswer'
 
-export { questionsQuery, questionNumber, incrementQuestionNumber }
+export { questionsQuery, questionNumber, handleAnswer }
