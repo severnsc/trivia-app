@@ -41,6 +41,43 @@ export default {
       }
       cache.writeQuery({ query, data })
       return null
+    },
+    resetAnsweredQuestions: (_, { answeredQuestions }, { cache }) => {
+      const query = gql`
+        query getAnsweredQuestions {
+          answeredQuestions @client {
+            category
+            questionText
+            correctAnswer
+            userAnswer
+            correct
+          }
+        }
+      `
+      const previous = cache.readQuery({ query })
+      const data = {
+        answeredQuestions: answeredQuestions
+      }
+      cache.writeQuery({ query, data })
+      return null
+    },
+    resetQuestionNumber: (_, { value }, { cache }) => {
+      const query = gql`
+        query getQuestionNumber {
+          questionNumber @client {
+            value
+          }
+        }
+      `
+      const previous = cache.readQuery({ query })
+      const data = {
+        questionNumber: {
+          ...previous.questionNumber,
+          value: value
+        }
+      }
+      cache.writeQuery({ query, data })
+      return null
     }
   }
 }

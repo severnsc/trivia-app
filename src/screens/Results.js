@@ -22,6 +22,10 @@ const Results = ({navigation, answeredQuestions}) => {
     </View>
   )
 
+  const handlePress = () => {
+    navigation.navigate('Home')
+  }
+
   return(
     <Container>
       <H1>You Scored</H1>
@@ -36,7 +40,7 @@ const Results = ({navigation, answeredQuestions}) => {
           />
         </Card.Body>
       </Card>
-      <Button onPress={() => navigation.navigate('Home', {name: "Home"})}  title="PLAY AGAIN?" />
+      <Button onPress={() => handlePress()}  title="PLAY AGAIN?" />
     </Container>
   )
 }
