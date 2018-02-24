@@ -7,10 +7,11 @@ import { graphql, compose } from 'react-apollo'
 import {
   questionsQuery,
   questionNumber,
-  handleAnswer
+  handleAnswer,
+  completeQuiz
 } from '../graphql'
 
-const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer}) => {
+const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer, completeQuiz}) => {
 
   if(questionsQuery.loading){
     return(
@@ -28,7 +29,12 @@ const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer}) => {
     if(string === question.correctAnswer){
       correct = true
     }
-    handleAnswer({variables: {value: questionNumber, answeredQuestion: {...question, userAnswer: string, correct}}})
+    if(questionNumber === 10){
+      completeQuiz({variables: {answeredQuestion: {...question, userAnswer: string, correct}}})
+      navigation.navigate('Results')
+    }else{
+      handleAnswer({variables: {value: questionNumber, answeredQuestion: {...question, userAnswer: string, correct}}})
+    }
   }
 
   return(
@@ -55,5 +61,6 @@ const mapResultsToProps = ({data}) => {
 export default compose(
   graphql(questionsQuery, { name: 'questionsQuery' }),
   graphql(questionNumber, { props: mapResultsToProps }),
-  graphql(handleAnswer, {name: 'handleAnswer'})
+  graphql(handleAnswer, {name: 'handleAnswer'}),
+  graphql(completeQuiz, {name: 'completeQuiz'})
 )(Quiz)

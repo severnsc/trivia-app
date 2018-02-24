@@ -10,12 +10,8 @@ const AnsweredQuestion = gql`
   }
 `
 
-export default gql `
-  mutation handleAnswer($value: Int!, $answeredQuestion: AnsweredQuestion!) {
-    
-    incrementQuestionNumber(value: $value) @client {
-      value
-    }
+export default gql`
+  mutation answerQuestion($answeredQuestion: AnsweredQuestion!) {
 
     answerQuestion(answeredQuestion: $answeredQuestion) @client {
       questionText
