@@ -25,7 +25,7 @@ export default {
       cache.writeQuery({ query, data })
       return {answeredQuestion, __typename: 'AnsweredQuestion'}
     },
-    updateQuestionNumber: (_, { value }, { cache }) => {
+    incrementQuestionNumber: (_, { value }, { cache }) => {
       const query = gql`
         query getQuestionNumber {
           questionNumber @client {
@@ -37,10 +37,10 @@ export default {
       const data = {
         questionNumber: {
           ...previous.questionNumber,
-          value: value
+          value: previous.questionNumber.value + 1
         }
       }
-      cache.writeQuery({ query, cache })
+      cache.writeQuery({ query, data })
       return null
     }
   }

@@ -4,9 +4,13 @@ import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import { H1, H2 } from '../components/common/Typography'
 import { graphql, compose } from 'react-apollo'
-import { questionsQuery, questionNumber } from '../graphql'
+import {
+  questionsQuery,
+  questionNumber,
+  incrementQuestionNumber 
+} from '../graphql'
 
-const Quiz = ({questionsQuery, questionNumber}) => {
+const Quiz = ({navigation, questionsQuery, questionNumber, incrementQuestionNumber}) => {
   
   if(questionsQuery.loading){
     return(
@@ -18,7 +22,14 @@ const Quiz = ({questionsQuery, questionNumber}) => {
 
   const questions = questionsQuery.questions
   const question = questions[questionNumber - 1]
-  console.log(questionNumber)
+
+  const handlePress = () => {
+    if(questionNumber === 10){
+      navigation.navigate('Results', {name: "Results"})
+    }else{
+      incrementQuestionNumber({variables: {value: questionNumber}})
+    }
+  }
 
   return(
     <Container>
@@ -28,8 +39,8 @@ const Quiz = ({questionsQuery, questionNumber}) => {
           <H2>{question.questionText}</H2>
         </Card.Body>
       </Card>
-      <Button onPress={() => {}} title={"TRUE"} />
-      <Button onPress={() => {}} title={"FALSE"} />
+      <Button onPress={() => handlePress()} title={"TRUE"} />
+      <Button onPress={() => handlePress()} title={"FALSE"} />
       <Text>{questionNumber} of 10</Text>
     </Container>
   )
@@ -44,5 +55,6 @@ const mapResultsToProps = ({data}) => {
 
 export default compose(
   graphql(questionsQuery, { name: 'questionsQuery' }),
-  graphql(questionNumber, { props: mapResultsToProps })
+  graphql(questionNumber, { props: mapResultsToProps }),
+  graphql(incrementQuestionNumber, {name: 'incrementQuestionNumber'})
 )(Quiz)
