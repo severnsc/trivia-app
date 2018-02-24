@@ -29,11 +29,12 @@ const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer, complet
     if(string === question.correctAnswer){
       correct = true
     }
+    const answeredQuestion = {...question, userAnswer: string, correct}
     if(questionNumber === 10){
-      completeQuiz({variables: {answeredQuestion: {...question, userAnswer: string, correct}}})
+      completeQuiz({variables: {answeredQuestion}})
       navigation.navigate('Results')
     }else{
-      handleAnswer({variables: {value: questionNumber, answeredQuestion: {...question, userAnswer: string, correct}}})
+      handleAnswer({variables: {value: questionNumber, answeredQuestion}})
     }
   }
 
@@ -58,8 +59,12 @@ const mapResultsToProps = ({data}) => {
   }
 }
 
+const options = {
+  fetchPolicy: "network-only"
+}
+
 export default compose(
-  graphql(questionsQuery, { name: 'questionsQuery', options: {fetchPolicy: "network-only"} }),
+  graphql(questionsQuery, { name: 'questionsQuery', options }),
   graphql(questionNumber, { props: mapResultsToProps }),
   graphql(handleAnswer, {name: 'handleAnswer'}),
   graphql(completeQuiz, {name: 'completeQuiz'})
