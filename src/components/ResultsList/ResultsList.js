@@ -12,3 +12,10 @@ export default ResultsList = ({data, renderItem, keyExtractor, ItemSeparatorComp
     ItemSeparatorComponent={ItemSeparatorComponent}
   />
 )
+
+ResultsList.propTypes = {
+  data: PropTypes.array.isRequired,
+  renderItem: PropTypes.func.isRequired,
+  keyExtractor: PropTypes.func.isRequired,
+  ItemSeparatorComponent: PropTypes.func.isRequired
+}
