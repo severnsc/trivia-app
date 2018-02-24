@@ -4,6 +4,7 @@ import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import { H1, H2 } from '../components/common/Typography'
 import { graphql, compose } from 'react-apollo'
+import entities from 'entities'
 import {
   questionsQuery,
   questionNumber,
@@ -43,7 +44,7 @@ const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer, complet
       <H1>{question.category}</H1>
       <Card>
         <Card.Body>
-          <H2>{question.questionText}</H2>
+          <H2>{entities.decodeHTML(question.questionText)}</H2>
         </Card.Body>
       </Card>
       <Button onPress={() => handlePress("True")} title={"TRUE"} />

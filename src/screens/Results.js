@@ -6,6 +6,7 @@ import ResultsList from '../components/ResultsList'
 import Card from '../components/common/Card'
 import { graphql, compose } from 'react-apollo'
 import { getAnsweredQuestions } from '../graphql'
+import entities from "entities"
 
 const Results = ({navigation, answeredQuestions}) => {
 
@@ -14,7 +15,7 @@ const Results = ({navigation, answeredQuestions}) => {
   const resultsListItem = ({item}) => (
     <View>
       <Text>
-        {item.questionText}
+        {entities.decodeHTML(item.questionText)}
       </Text>
       <Text>
         You answered: {item.userAnswer} | Correct answer: {item.correctAnswer}
