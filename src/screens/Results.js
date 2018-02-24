@@ -35,7 +35,7 @@ const Results = ({navigation, answeredQuestions}) => {
           <ResultsList
             data={answeredQuestions}
             renderItem={resultsListItem}
-            keyExtractor={(item, index) => item.questionText}
+            keyExtractor={(item, index) => index}
             ItemSeparatorComponent={() => <View style={{borderWidth:1, borderColor:"grey"}} />}
           />
         </Card.Body>
