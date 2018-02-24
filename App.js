@@ -8,23 +8,26 @@ import client from './src/Apollo'
 
 const RootNavigator = StackNavigator({
   Home: {
-    screen: Home
+    screen: Home,
+    navigationOptions: () => ({
+      title: "Home"
+    })
   },
   Quiz: {
-    screen: Quiz
+    screen: Quiz,
+    navigationOptions: () => ({
+      title: "Quiz"
+    })
   },
   Results: {
-    screen: Results
+    screen: Results,
+    navigationOptions: () => ({
+      title: "Results"
+    })
   },
 },
   {
-    initialRouteName: 'Home',
-    initialRouteParams: {
-      name: "Home"
-    },
-    navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.name}`
-    })
+    initialRouteName: 'Home'
   }
 )
 
