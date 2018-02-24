@@ -1,19 +1,10 @@
 import gql from "graphql-tag"
+import { getAnsweredQuestions, getQuestionNumber } from './queries'
 
 export default {
   Mutation: {
     answerQuestion: (_, { answeredQuestion }, { cache }) => {
-      const query = gql`
-        query getAnsweredQuestions {
-          answeredQuestions @client {
-            category
-            questionText
-            correctAnswer
-            userAnswer
-            correct
-          }
-        }
-      `
+      const query = getAnsweredQuestions
       const previous = cache.readQuery({ query })
       const data = {
         answeredQuestions: [
@@ -25,13 +16,7 @@ export default {
       return null
     },
     incrementQuestionNumber: (_, { value }, { cache }) => {
-      const query = gql`
-        query getQuestionNumber {
-          questionNumber @client {
-            value
-          }
-        }
-      `
+      const query = getQuestionNumber
       const previous = cache.readQuery({ query })
       const data = {
         questionNumber: {
@@ -43,17 +28,7 @@ export default {
       return null
     },
     resetAnsweredQuestions: (_, { answeredQuestions }, { cache }) => {
-      const query = gql`
-        query getAnsweredQuestions {
-          answeredQuestions @client {
-            category
-            questionText
-            correctAnswer
-            userAnswer
-            correct
-          }
-        }
-      `
+      const query = getAnsweredQuestions
       const previous = cache.readQuery({ query })
       const data = {
         answeredQuestions: answeredQuestions
@@ -62,13 +37,7 @@ export default {
       return null
     },
     resetQuestionNumber: (_, { value }, { cache }) => {
-      const query = gql`
-        query getQuestionNumber {
-          questionNumber @client {
-            value
-          }
-        }
-      `
+      const query = getQuestionNumber
       const previous = cache.readQuery({ query })
       const data = {
         questionNumber: {
