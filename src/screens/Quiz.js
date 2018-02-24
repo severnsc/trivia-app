@@ -59,7 +59,7 @@ const mapResultsToProps = ({data}) => {
 }
 
 export default compose(
-  graphql(questionsQuery, { name: 'questionsQuery' }),
+  graphql(questionsQuery, { name: 'questionsQuery', options: {fetchPolicy: "network-only"} }),
   graphql(questionNumber, { props: mapResultsToProps }),
   graphql(handleAnswer, {name: 'handleAnswer'}),
   graphql(completeQuiz, {name: 'completeQuiz'})
