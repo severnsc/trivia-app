@@ -11,7 +11,7 @@ import {
 } from '../graphql'
 
 const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer}) => {
-  
+
   if(questionsQuery.loading){
     return(
       <Container>
@@ -28,11 +28,7 @@ const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer}) => {
     if(string === question.correctAnswer){
       correct = true
     }
-    if(questionNumber === 10){
-      navigation.navigate('Results', {name: "Results"})
-    }else{
-      handleAnswer({variables: {value: questionNumber, answeredQuestion: {...question, userAnswer: string, correct}}})
-    }
+    handleAnswer({variables: {value: questionNumber, answeredQuestion: {...question, userAnswer: string, correct}}})
   }
 
   return(
@@ -48,7 +44,6 @@ const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer}) => {
       <Text>{questionNumber} of 10</Text>
     </Container>
   )
-
 }
 
 const mapResultsToProps = ({data}) => {
