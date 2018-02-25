@@ -8,11 +8,12 @@ import entities from 'entities'
 import {
   questionsQuery,
   questionNumber,
-  handleAnswer,
-  completeQuiz
+  incrementQuestionNumber,
+  answerQuestion,
+  createAnsweredQuestion
 } from '../graphql'
 
-const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer, completeQuiz}) => {
+const Quiz = ({navigation, questionsQuery, questionNumber, incrementQuestionNumber, answerQuestion}) => {
 
   if(questionsQuery.loading){
     return(
@@ -26,16 +27,13 @@ const Quiz = ({navigation, questionsQuery, questionNumber, handleAnswer, complet
   const question = questions[questionNumber - 1]
 
   const handlePress = string => {
-    let correct = false
-    if(string === question.correctAnswer){
-      correct = true
-    }
-    const answeredQuestion = {...question, userAnswer: string, correct}
+    const answeredQuestion = createAnsweredQuestion(string, question)
     if(questionNumber === 10){
-      completeQuiz({variables: {answeredQuestion}})
+      answerQuestion({variables: {answeredQuestion}})
       navigation.navigate('Results')
     }else{
-      handleAnswer({variables: {value: questionNumber, answeredQuestion}})
+      answerQuestion({variables: {answeredQuestion}})
+      incrementQuestionNumber({variables: {questionNumber}})
     }
   }
 
@@ -67,6 +65,6 @@ const options = {
 export default compose(
   graphql(questionsQuery, { name: 'questionsQuery', options }),
   graphql(questionNumber, { props: mapResultsToProps }),
-  graphql(handleAnswer, {name: 'handleAnswer'}),
-  graphql(completeQuiz, {name: 'completeQuiz'})
+  graphql(incrementQuestionNumber, {name: 'incrementQuestionNumber'}),
+  graphql(answerQuestion, {name: "answerQuestion"})
 )(Quiz)

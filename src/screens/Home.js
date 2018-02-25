@@ -3,12 +3,16 @@ import { Text, Button } from 'react-native';
 import Container from '../components/common/Container'
 import { H1 } from '../components/common/Typography'
 import { graphql, compose } from 'react-apollo'
-import { resetGame } from '../graphql'
+import {
+  resetQuestionNumber,
+  resetAnsweredQuestions
+} from '../graphql'
 
-const Home = ({navigation, resetGame}) => {
+const Home = ({navigation, resetQuestionNumber, resetAnsweredQuestions}) => {
   
   const handlePress = () => {
-    resetGame({variables: {answeredQuestions: [], value: 1}})
+    resetQuestionNumber({variables: {value: 1}})
+    resetAnsweredQuestions({variables: {answeredQuestions: []}})
     navigation.navigate('Quiz')
   }
 
@@ -23,5 +27,6 @@ const Home = ({navigation, resetGame}) => {
 }
 
 export default compose(
-  graphql(resetGame, {name: "resetGame"})
+  graphql(resetQuestionNumber, {name: "resetQuestionNumber"}),
+  graphql(resetAnsweredQuestions, {name: "resetAnsweredQuestions"})
 )(Home)

@@ -1,15 +1,9 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  mutation resetGame($answeredQuestions: AnsweredQuestions!, $value: Int!) {
-    
+  mutation resetAnsweredQuestions($answeredQuestions: AnsweredQuestions!) {
     resetAnsweredQuestions(answeredQuestions: $answeredQuestions) @client {
       questionText
     }
-
-    resetQuestionNumber(value: $value) @client {
-      value
-    }
-
   }
 `
