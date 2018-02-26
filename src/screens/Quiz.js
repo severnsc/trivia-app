@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, Button} from 'react-native'
+import {ActivityIndicator, View, Text, Button} from 'react-native'
 import Container from '../components/common/Container'
 import Card from '../components/common/Card'
 import { H1, H2 } from '../components/common/Typography'
@@ -18,7 +18,7 @@ const Quiz = ({navigation, questionsQuery, questionNumber, incrementQuestionNumb
   if(questionsQuery.loading){
     return(
       <Container>
-        <H1>Loading...</H1>
+        <ActivityIndicator />
       </Container>
     )
   }
