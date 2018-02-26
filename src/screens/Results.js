@@ -21,7 +21,7 @@ const Results = ({navigation, answeredQuestions, score}) => {
     </View>
   )
 
-  const separator = <View style={{borderWidth:1, borderColor:"grey"}} />
+  const separator = () => <View style={{borderWidth:1, borderColor:"grey"}} />
 
   const handlePress = () => {
     navigation.navigate('Home')
@@ -37,7 +37,7 @@ const Results = ({navigation, answeredQuestions, score}) => {
             data={answeredQuestions}
             renderItem={resultsListItem}
             keyExtractor={(item, index) => index}
-            ItemSeparatorComponent={() => separator}
+            ItemSeparatorComponent={separator}
           />
         </Card.Body>
       </Card>
