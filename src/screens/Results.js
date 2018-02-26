@@ -8,9 +8,7 @@ import { graphql, compose } from 'react-apollo'
 import { getAnsweredQuestions } from '../graphql'
 import entities from "entities"
 
-const Results = ({navigation, answeredQuestions}) => {
-
-  const score = answeredQuestions.filter(q => q.correct).length
+const Results = ({navigation, answeredQuestions, score}) => {
 
   const resultsListItem = ({item}) => (
     <View>
@@ -50,7 +48,8 @@ const Results = ({navigation, answeredQuestions}) => {
 
 const mapResutsToProps = ({data}) => {
   return {
-    answeredQuestions: data.answeredQuestions
+    answeredQuestions: data.answeredQuestions,
+    score: data.answeredQuestions.filter(q => q.correct).length
   }
 }
 
