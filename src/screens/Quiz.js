@@ -18,7 +18,7 @@ const Quiz = ({navigation, questionsQuery, questionNumber, incrementQuestionNumb
   if(questionsQuery.loading){
     return(
       <Container>
-        <ActivityIndicator />
+        <ActivityIndicator size="large" />
       </Container>
     )
   }
