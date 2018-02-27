@@ -13,9 +13,9 @@ import {
   createAnsweredQuestion
 } from '../graphql'
 
-const Quiz = ({navigation, questionsQuery, questionNumber, incrementQuestionNumber, answerQuestion}) => {
+const Quiz = ({navigation, loading, questions, questionNumber, incrementQuestionNumber, answerQuestion}) => {
 
-  if(questionsQuery.loading){
+  if(loading){
     return(
       <Container>
         <ActivityIndicator size="large" />
@@ -23,11 +23,10 @@ const Quiz = ({navigation, questionsQuery, questionNumber, incrementQuestionNumb
     )
   }
 
-  const questions = questionsQuery.questions
-  const question = questions[questionNumber - 1]
+  const currentQuestion = questions[questionNumber - 1]
 
   const handlePress = string => {
-    const answeredQuestion = createAnsweredQuestion(string, question)
+    const answeredQuestion = createAnsweredQuestion(string, currentQuestion)
     if(questionNumber === 10){
       answerQuestion({variables: {answeredQuestion}})
       navigation.navigate('Results')
@@ -39,10 +38,10 @@ const Quiz = ({navigation, questionsQuery, questionNumber, incrementQuestionNumb
 
   return(
     <Container>
-      <H1>{question.category}</H1>
+      <H1>{currentQuestion.category}</H1>
       <Card>
         <Card.Body>
-          <H2>{entities.decodeHTML(question.questionText)}</H2>
+          <H2>{entities.decodeHTML(currentQuestion.questionText)}</H2>
         </Card.Body>
       </Card>
       <Button onPress={() => handlePress("True")} title={"TRUE"} />
@@ -52,18 +51,21 @@ const Quiz = ({navigation, questionsQuery, questionNumber, incrementQuestionNumb
   )
 }
 
-const mapResultsToProps = ({data}) => {
-  return {
-    questionNumber: data.questionNumber.value
-  }
-}
+const mapResultsToProps = ({data}) => ({
+  questionNumber: data.questionNumber.value
+})
+
+const mapQuestionsQueryToProps = ({data}) => ({
+  questions: data.questions,
+  loading: data.loading
+})
 
 const options = {
   fetchPolicy: "network-only"
 }
 
 export default compose(
-  graphql(questionsQuery, { name: 'questionsQuery', options }),
+  graphql(questionsQuery, { props: mapQuestionsQueryToProps, options }),
   graphql(questionNumber, { props: mapResultsToProps }),
   graphql(incrementQuestionNumber, {name: 'incrementQuestionNumber'}),
   graphql(answerQuestion, {name: "answerQuestion"})
