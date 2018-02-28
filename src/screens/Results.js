@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, Button, View } from 'react-native'
 import Container from '../components/common/Container'
 import { H1, H2 } from '../components/common/Typography'
-import ResultsList from '../components/ResultsList'
+import ResultsCard from '../components/ResultsCard'
 import Card from '../components/common/Card'
 import { graphql, compose } from 'react-apollo'
 import { getAnsweredQuestions } from '../graphql'
@@ -17,11 +17,7 @@ const Results = ({navigation, answeredQuestions, score}) => {
     <Container>
       <H1>You Scored</H1>
       <H2>{score}/10</H2>
-      <Card>
-        <Card.Body>
-          <ResultsList data={answeredQuestions} />
-        </Card.Body>
-      </Card>
+      <ResultsCard data={answeredQuestions} />
       <Button onPress={() => handlePress()}  title="PLAY AGAIN?" />
     </Container>
   )
