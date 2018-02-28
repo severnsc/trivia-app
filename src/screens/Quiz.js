@@ -29,12 +29,11 @@ const Quiz = ({navigation, loading, questions, questionNumber, incrementQuestion
 
   const handlePress = string => {
     const answeredQuestion = createAnsweredQuestion(string, currentQuestion)
+    answerQuestion({variables: {answeredQuestion}})
     if(questionNumber === 10){
       toggleDisabled({variables: {bool: !disabled}})
-      answerQuestion({variables: {answeredQuestion}})
       navigation.navigate('Results')
     }else{
-      answerQuestion({variables: {answeredQuestion}})
       incrementQuestionNumber({variables: {questionNumber}})
     }
   }
