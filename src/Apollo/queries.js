@@ -20,4 +20,16 @@ const getQuestionNumber = gql`
   }
 `
 
-export { getAnsweredQuestions, getQuestionNumber }
+const getQuizButtons = gql`
+  query getQuizButtons {
+    quizButtons @client {
+      disabled
+    }
+  }
+`
+
+export {
+  getAnsweredQuestions,
+  getQuestionNumber,
+  getQuizButtons
+}

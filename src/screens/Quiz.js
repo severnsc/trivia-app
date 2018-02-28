@@ -10,10 +10,12 @@ import {
   questionNumber,
   incrementQuestionNumber,
   answerQuestion,
-  createAnsweredQuestion
+  createAnsweredQuestion,
+  quizButtonsQuery,
+  toggleQuizButtons
 } from '../graphql'
 
-const Quiz = ({navigation, loading, questions, questionNumber, incrementQuestionNumber, answerQuestion}) => {
+const Quiz = ({navigation, loading, questions, questionNumber, incrementQuestionNumber, answerQuestion, disabled, toggleDisabled}) => {
 
   if(loading){
     return(
@@ -28,6 +30,7 @@ const Quiz = ({navigation, loading, questions, questionNumber, incrementQuestion
   const handlePress = string => {
     const answeredQuestion = createAnsweredQuestion(string, currentQuestion)
     if(questionNumber === 10){
+      toggleDisabled({variables: {bool: !disabled}})
       answerQuestion({variables: {answeredQuestion}})
       navigation.navigate('Results')
     }else{
@@ -44,14 +47,14 @@ const Quiz = ({navigation, loading, questions, questionNumber, incrementQuestion
           <H2>{entities.decodeHTML(currentQuestion.questionText)}</H2>
         </Card.Body>
       </Card>
-      <Button onPress={() => handlePress("True")} title={"TRUE"} />
-      <Button onPress={() => handlePress("False")} title={"FALSE"} />
+      <Button disabled={disabled} onPress={() => handlePress("True")} title={"TRUE"} />
+      <Button disabled={disabled} onPress={() => handlePress("False")} title={"FALSE"} />
       <Text>{questionNumber} of 10</Text>
     </Container>
   )
 }
 
-const mapResultsToProps = ({data}) => ({
+const mapQuestionNumberToProps = ({data}) => ({
   questionNumber: data.questionNumber.value
 })
 
@@ -60,13 +63,19 @@ const mapQuestionsQueryToProps = ({data}) => ({
   loading: data.loading
 })
 
+const mapQuizButtonsToProps = ({data}) => ({
+  disabled: data.disabled
+})
+
 const options = {
   fetchPolicy: "network-only"
 }
 
 export default compose(
   graphql(questionsQuery, { props: mapQuestionsQueryToProps, options }),
-  graphql(questionNumber, { props: mapResultsToProps }),
+  graphql(questionNumber, { props: mapQuestionNumberToProps }),
   graphql(incrementQuestionNumber, {name: 'incrementQuestionNumber'}),
-  graphql(answerQuestion, {name: "answerQuestion"})
+  graphql(answerQuestion, {name: "answerQuestion"}),
+  graphql(quizButtonsQuery, {props: mapQuizButtonsToProps}),
+  graphql(toggleQuizButtons, {name: 'toggleDisabled'})
 )(Quiz)

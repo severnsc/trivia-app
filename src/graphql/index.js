@@ -5,6 +5,8 @@ import answerQuestion from './answerQuestion'
 import getAnsweredQuestions from './getAnsweredQuestions'
 import resetQuestionNumber from './resetQuestionNumber'
 import resetAnsweredQuestions from './resetAnsweredQuestions'
+import quizButtonsQuery from './quizButtonsQuery'
+import toggleQuizButtons from './toggleQuizButtons'
 
 const createAnsweredQuestion = (string, question) => {
   let correct = false
@@ -22,5 +24,7 @@ export {
   getAnsweredQuestions,
   resetQuestionNumber,
   resetAnsweredQuestions,
-  createAnsweredQuestion
+  createAnsweredQuestion,
+  quizButtonsQuery,
+  toggleQuizButtons
 }

@@ -1,5 +1,9 @@
 import gql from "graphql-tag"
-import { getAnsweredQuestions, getQuestionNumber } from './queries'
+import {
+  getAnsweredQuestions,
+  getQuestionNumber,
+  getQuizButtons
+} from './queries'
 
 export default {
   Mutation: {
@@ -43,6 +47,18 @@ export default {
         questionNumber: {
           ...previous.questionNumber,
           value: value
+        }
+      }
+      cache.writeQuery({ query, data })
+      return null
+    },
+    toggleQuizButtons: (_, { bool }, { cache }) => {
+      const query = getQuizButtons
+      const previous = cache.readQuery({ query })
+      const data = {
+        quizButtons: {
+          ...previous.quizButtons,
+          diabled: bool
         }
       }
       cache.writeQuery({ query, data })

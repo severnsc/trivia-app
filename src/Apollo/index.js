@@ -15,6 +15,10 @@ const defaultState = {
   questionNumber: {
     __typename: "QuestionNumber",
     value: 1
+  },
+  quizButtons: {
+    __typename: "QuizButtons",
+    disabled: false
   }
 }
 
