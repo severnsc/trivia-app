@@ -6,22 +6,8 @@ import ResultsList from '../components/ResultsList'
 import Card from '../components/common/Card'
 import { graphql, compose } from 'react-apollo'
 import { getAnsweredQuestions } from '../graphql'
-import entities from "entities"
 
 const Results = ({navigation, answeredQuestions, score}) => {
-
-  const resultsListItem = ({item}) => (
-    <View>
-      <Text>
-        {entities.decodeHTML(item.questionText)}
-      </Text>
-      <Text>
-        You answered: {item.userAnswer} | Correct answer: {item.correctAnswer}
-      </Text>
-    </View>
-  )
-
-  const separator = () => <View style={{borderWidth:1, borderColor:"grey"}} />
 
   const handlePress = () => {
     navigation.navigate('Home')
@@ -33,12 +19,7 @@ const Results = ({navigation, answeredQuestions, score}) => {
       <H2>{score}/10</H2>
       <Card>
         <Card.Body>
-          <ResultsList
-            data={answeredQuestions}
-            renderItem={resultsListItem}
-            keyExtractor={(item, index) => index}
-            ItemSeparatorComponent={separator}
-          />
+          <ResultsList data={answeredQuestions} />
         </Card.Body>
       </Card>
       <Button onPress={() => handlePress()}  title="PLAY AGAIN?" />

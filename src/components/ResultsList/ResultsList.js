@@ -1,21 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Text, FlatList } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import styles from './styles'
+import entities from "entities"
 
-export default ResultsList = ({data, renderItem, keyExtractor, ItemSeparatorComponent}) => (
+const resultsListItem = ({item}) => (
+  <View>
+    <Text>
+      {entities.decodeHTML(item.questionText)}
+    </Text>
+    <Text>
+      You answered: {item.userAnswer} | Correct answer: {item.correctAnswer}
+    </Text>
+  </View>
+)
+
+const separator = () => <View style={styles.separator} />
+
+export default ResultsList = ({data}) => (
   <FlatList
     style={styles.resultsList}
     data={data}
-    renderItem={renderItem}
-    keyExtractor={keyExtractor}
-    ItemSeparatorComponent={ItemSeparatorComponent}
+    renderItem={resultsListItem}
+    keyExtractor={(item, index) => index}
+    ItemSeparatorComponent={separator}
   />
 )
 
 ResultsList.propTypes = {
-  data: PropTypes.array.isRequired,
-  renderItem: PropTypes.func.isRequired,
-  keyExtractor: PropTypes.func.isRequired,
-  ItemSeparatorComponent: PropTypes.func.isRequired
+  data: PropTypes.array.isRequired
 }
