@@ -8,6 +8,7 @@ export default styles = StyleSheet.create({
   },
   H2: {
     fontSize: 18,
-    textAlign: "center"
+    textAlign: "center",
+    fontWeight: "bold"
   }
 })
