@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import Container from '../components/common/Container'
 import { H1, CenteredText } from '../components/common/Typography'
 import Button from '../components/common/Button'
@@ -24,7 +23,7 @@ const Home = ({navigation, resetQuestionNumber, resetAnsweredQuestions}) => {
       <Card>
         <Card.Body>
           <CenteredText>You will be presented with 10 True or False questions.</CenteredText>
-          <Text>Can you score 100%?</Text>
+          <CenteredText>Can you score 100%?</CenteredText>
         </Card.Body>
       </Card>
       <Button title="BEGIN!" onPress={() => handlePress()} />

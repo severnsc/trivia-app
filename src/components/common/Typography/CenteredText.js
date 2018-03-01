@@ -4,7 +4,7 @@ import { Text } from 'react-native'
 import styles from './styles'
 
 export default CenteredText = ({children}) => (
-  <Text style={styles.centeredText}>
+  <Text style={[styles.text, styles.centeredText]}>
     {children}
   </Text>
 )

@@ -1,8 +1,8 @@
 import React from 'react'
-import {ActivityIndicator, View, Text } from 'react-native'
+import {ActivityIndicator, View } from 'react-native'
 import Container from '../components/common/Container'
 import QuestionCard from '../components/QuestionCard'
-import { H1 } from '../components/common/Typography'
+import { H1, CenteredText } from '../components/common/Typography'
 import Button from '../components/common/Button'
 import { graphql, compose } from 'react-apollo'
 import entities from 'entities'
@@ -45,7 +45,7 @@ const Quiz = ({navigation, loading, questions, questionNumber, incrementQuestion
       <QuestionCard question={entities.decodeHTML(currentQuestion.questionText)} />
       <Button disabled={disabled} onPress={() => handlePress("True")} title={"TRUE"} />
       <Button disabled={disabled} onPress={() => handlePress("False")} title={"FALSE"} />
-      <Text>{questionNumber} of 10</Text>
+      <CenteredText>{questionNumber} of 10</CenteredText>
     </Container>
   )
 }
