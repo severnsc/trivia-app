@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native'
 
 export default styles = StyleSheet.create({
+  resultsCard: {
+    height: 300
+  },
   card: {
     display: "flex",
     flexDirection: "column",
@@ -11,8 +14,8 @@ export default styles = StyleSheet.create({
     shadowOpacity: 0.12,
     shadowOffset: {width: 1, height: 1},
     shadowRadius: 6,
-    minHeight: 90,
-    maxWidth: 310,
+    height: 150,
+    width: 300,
     padding: 10
   },
   cardBody: {

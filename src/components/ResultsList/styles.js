@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export default styles = StyleSheet.create({
   resultsList: {
-    maxHeight: 200
+    maxHeight: 300
   },
   separator: {
     borderWidth:1, 
