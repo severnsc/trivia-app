@@ -1,8 +1,9 @@
 import React from 'react'
-import {ActivityIndicator, View, Text, Button} from 'react-native'
+import {ActivityIndicator, View, Text } from 'react-native'
 import Container from '../components/common/Container'
 import QuestionCard from '../components/QuestionCard'
 import { H1 } from '../components/common/Typography'
+import Button from '../components/common/Button'
 import { graphql, compose } from 'react-apollo'
 import entities from 'entities'
 import {

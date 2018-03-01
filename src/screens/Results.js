@@ -1,9 +1,10 @@
 import React from 'react'
-import { Text, Button, View } from 'react-native'
+import { Text, View } from 'react-native'
 import Container from '../components/common/Container'
 import { H1, H2 } from '../components/common/Typography'
 import ResultsCard from '../components/ResultsCard'
 import Card from '../components/common/Card'
+import Button from '../components/common/Button'
 import { graphql, compose } from 'react-apollo'
 import { getAnsweredQuestions } from '../graphql'
 
