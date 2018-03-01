@@ -22,7 +22,7 @@ export default ResultsList = ({data}) => (
     style={styles.resultsList}
     data={data}
     renderItem={resultsListItem}
-    keyExtractor={(item, index) => index}
+    keyExtractor={(item) => item.id}
     ItemSeparatorComponent={separator}
   />
 )

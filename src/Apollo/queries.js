@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 const getAnsweredQuestions = gql`
   query getAnsweredQuestions {
     answeredQuestions @client {
+      id
       category
       questionText
       correctAnswer

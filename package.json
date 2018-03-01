@@ -32,6 +32,7 @@
     "react": "16.2.0",
     "react-apollo": "^2.0.4",
     "react-native": "0.52.0",
-    "react-navigation": "^1.1.2"
+    "react-navigation": "^1.1.2",
+    "shortid": "^2.2.8"
   }
 }
