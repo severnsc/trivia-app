@@ -10,19 +10,16 @@ const RootNavigator = StackNavigator({
   Home: {
     screen: Home,
     navigationOptions: () => ({
-      title: "Home"
+      header: null
     })
   },
   Quiz: {
-    screen: Quiz,
-    navigationOptions: () => ({
-      title: "Quiz"
-    })
+    screen: Quiz
   },
   Results: {
     screen: Results,
     navigationOptions: () => ({
-      title: "Results"
+      header: null
     })
   },
 },
