@@ -1,8 +1,9 @@
 import React from 'react';
 import { Text } from 'react-native';
 import Container from '../components/common/Container'
-import { H1 } from '../components/common/Typography'
+import { H1, CenteredText } from '../components/common/Typography'
 import Button from '../components/common/Button'
+import Card from '../components/common/Card'
 import { graphql, compose } from 'react-apollo'
 import {
   resetQuestionNumber,
@@ -20,8 +21,12 @@ const Home = ({navigation, resetQuestionNumber, resetAnsweredQuestions}) => {
   return (
     <Container>
       <H1>Welcome to the Trivia Challenge!</H1>
-      <Text>You will be presented with 10 True or False questions.</Text>
-      <Text>Can you score 100%?</Text>
+      <Card>
+        <Card.Body>
+          <CenteredText>You will be presented with 10 True or False questions.</CenteredText>
+          <Text>Can you score 100%?</Text>
+        </Card.Body>
+      </Card>
       <Button title="BEGIN!" onPress={() => handlePress()} />
     </Container>
   )

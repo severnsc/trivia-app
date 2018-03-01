@@ -19,6 +19,8 @@ export default styles = StyleSheet.create({
     padding: 10
   },
   cardBody: {
-    display:"flex"
+    flex: 1,
+    alignItems: "center",
+    justifyContent: 'space-around'
   }
 })

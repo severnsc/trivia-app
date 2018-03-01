@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View } from 'react-native'
+import { Text } from 'react-native'
 import styles from './styles'
 
-export default CardBody = ({children}) => (
-  <View style={styles.cardBody}>
+export default CenteredText = ({children}) => (
+  <Text style={styles.centeredText}>
     {children}
-  </View>
+  </Text>
 )
 
-CardBody.propTypes = {
+CenteredText.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.element,
+    PropTypes.string,
     PropTypes.array
   ]).isRequired
 }

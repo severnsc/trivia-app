@@ -10,5 +10,8 @@ export default styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     fontWeight: "bold"
+  },
+  centeredText: {
+    textAlign: "center"
   }
 })
