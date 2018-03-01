@@ -4,10 +4,10 @@ import { View, Text, FlatList } from 'react-native'
 import styles from './styles'
 import entities from "entities"
 
-const resultsListItem = ({item}) => (
+const resultsListItem = ({item, index}) => (
   <View>
     <Text>
-      {entities.decodeHTML(item.questionText)}
+      {index + 1}. {entities.decodeHTML(item.questionText)}
     </Text>
     <Text>
       You answered: {item.userAnswer} | Correct answer: {item.correctAnswer}
